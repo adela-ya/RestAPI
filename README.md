@@ -47,3 +47,8 @@ Dentro de la configuración del __Dockerfile__, instala __composer__.
    # reconstruir imagen en el background
    docker-compose up --build -d
    ```
+6. Correr algún comando de `composer` desde fuera del contenedor. Por ejemplo:
+
+   ```bash
+   docker exec php-unit-herencia composer require phpunit/phpunit
+   ```
