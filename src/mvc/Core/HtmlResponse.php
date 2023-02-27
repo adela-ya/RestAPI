@@ -2,23 +2,23 @@
 
 namespace mvc\Core;
 
-class BaseView
-{
+class HtmlResponse extends BaseResponse {
     private string $layout;
+    private array  $data;
 
-    private array $data;
     public function __construct($layout, array $data = []) {
         $this->layout = $layout;
         $this->data   = $data;
     }
 
-    public function render(): void {
+    public function send(): void {
         // Base layout
         include 'mvc/Views/template.php';
     }
 
     public function renderContent(): void {
         extract($this->data);
+
         include "mvc/Views/$this->layout.php";
     }
 }

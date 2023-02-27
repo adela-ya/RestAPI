@@ -5,12 +5,10 @@ namespace mvc\Core;
 
 use mvc\Models\DbConnect;
 
-class BaseModel
-{
+class BaseModel {
     protected ?\PDO $dbConnect = null;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->dbConnect = DbConnect::getConnect();
     }
 }

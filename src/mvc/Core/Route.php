@@ -2,18 +2,13 @@
 
 namespace mvc\Core;
 
-use mvc\Controllers\ATOLController;
-use mvc\Controllers\FermaController;
+use mvc\Controllers\Api\AuthController;
 use mvc\Controllers\IndexController;
-use mvc\Controllers\OrangeDataController;
 
-class Route
-{
+class Route {
     private array $routeMap = [
+        'api-auth' => AuthController::class,
         'index'    => IndexController::class,
-        'atol'     => ATOLController::class,
-        'orangeData' => OrangeDataController::class,
-        'ferma'  => FermaController::class,
     ];
 
     public function getClassName($controllerName): ?string {
