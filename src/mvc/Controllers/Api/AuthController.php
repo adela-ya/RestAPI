@@ -26,6 +26,7 @@ class AuthController extends ApiBaseController {
             return $this->response($postData);
         }
 
-        return $this->responseError();
+        $errors["status"] = 'Неверный логин или пароль';
+        return $this->responseError($errors);
     }
 }

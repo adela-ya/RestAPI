@@ -3,7 +3,6 @@
 use mvc\Core\HtmlResponse;
 
 /** @var HtmlResponse $this */
-
 ?>
 <!DOCTYPE html>
 <html>

@@ -3,14 +3,23 @@
 namespace mvc\Controllers\Api;
 
 
-use mvc\Core\BaseController;
+use mvc\Api\ApiBaseController;
+use mvc\Api\CheckToken;
 
 
-class AtolController extends BaseController {
+
+class AtolController extends ApiBaseController {
     public function atolAction() {
-        $check  = $this->createCheck();
-        $status = $this->getStatus();
-        return $this->output('Atol/atol');
+        $checkToken  = new CheckToken();
+        $bearerToken = $checkToken->getUserByToken();
+        if ($bearerToken !== null) {
+            $check  = $this->createCheck();
+            $status = $this->getStatus();
+            return $this->response();
+        }
+        $errors["status"] = '401 Unauthorized!';
+        return $this->responseError($errors);
+
 
     }
 

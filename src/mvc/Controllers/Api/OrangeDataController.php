@@ -2,13 +2,20 @@
 
 namespace mvc\Controllers\Api;
 
-use mvc\Core\BaseController;
+use mvc\Api\ApiBaseController;
+use mvc\Api\CheckToken;
 
-class OrangeDataController extends BaseController {
+class OrangeDataController extends ApiBaseController {
     public function orangeDataAction() {
-        $check  = $this->createCheck();
-        $status = $this->getStatus();;
-        return $this->output('OrangeData/orangeData');
+        $checkToken  = new CheckToken();
+        $bearerToken = $checkToken->getUserByToken();
+        if ($bearerToken !== null) {
+            $check  = $this->createCheck();
+            $status = $this->getStatus();
+            return $this->response();
+        }
+        $errors["status"] = '401 Unauthorized!';
+        return $this->responseError($errors);
 
     }
 

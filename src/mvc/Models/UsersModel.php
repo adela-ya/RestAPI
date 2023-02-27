@@ -3,6 +3,7 @@
 namespace mvc\Models;
 
 use mvc\Core\BaseModel;
+use PDO;
 
 class UsersModel extends BaseModel {
 
@@ -15,6 +16,14 @@ class UsersModel extends BaseModel {
             return ($result["login"] === $data['login'] or $result["password_hash"] === $data['password']) ? $result["id"] : null;
         }
         return null;
+    }
+
+    public function checkById($userId) {
+        $sql   = "SELECT * FROM users WHERE id = :userId;)";
+        $query = $this->dbConnect->prepare($sql);
+        $query->bindValue('userId', $userId, PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetch();
     }
 
 }
