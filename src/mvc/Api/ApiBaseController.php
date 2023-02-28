@@ -7,7 +7,12 @@ use mvc\Models\UsersModel;
 use mvc\Models\UsersTokenModel;
 
 class ApiBaseController extends BaseController {
-    public function response(array $data = [], array $statusReceipt = []): JsonResponse {
+    public function response(array $data = []): JsonResponse {
+        return new JsonResponse([
+                                    'status' => true,
+                                    'data'   => $data
+                                ]);
+    }    public function responseReceipt(array $data = [], array $statusReceipt = []): JsonResponse {
         return new JsonResponse([
                                     'status' => true,
                                     'receipt'   => $data,

@@ -13,7 +13,7 @@ class FermaController extends ApiBaseController {
         if ($bearerToken !== null) {
             $receipt  = $this->createReceipt();
             $status = $this->getStatus();
-            return $this->response($receipt,$status);
+            return $this->responseReceipt($receipt,$status);
         }
         $errors["code"] = '401';
         $errors["message"] = 'Unauthorized!';
