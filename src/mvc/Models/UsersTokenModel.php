@@ -35,7 +35,7 @@ class UsersTokenModel extends BaseModel {
         $query->execute();
         return $query->fetch();
     }
-    public function getUserByToken($bearerToken) {
+    public function getUserByTokenInDb($bearerToken) {
         $sql   = "SELECT * FROM user_auth_token WHERE token = :token;)";
         $query = $this->dbConnect->prepare($sql);
         $query->bindValue('token', $bearerToken);

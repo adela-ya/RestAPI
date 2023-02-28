@@ -2,7 +2,6 @@
 
 namespace mvc\Core;
 
-use mvc\Api\JsonResponse;
 
 class BaseController {
     private ?RequestData $request = null;
